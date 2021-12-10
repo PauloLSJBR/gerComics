@@ -16,7 +16,7 @@ public class ResourceExceptionHandler {
         e.printStackTrace();
         org.zup.paulo.gerComics.exceptions.util.ErrorDetails error = new org.zup.paulo.gerComics.exceptions.util.ErrorDetails();
         error.setStatus(404l);
-        error.setTitle("Banda exception.");
+        error.setTitle("User exception.");
         error.setUrl("http://erros.teste.com/404");
         error.setTimestamp(System.currentTimeMillis());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
