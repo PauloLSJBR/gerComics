@@ -1,13 +1,9 @@
 package org.zup.paulo.gerComics.domain;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.zup.paulo.gerComics.annotation.Cpf;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,14 +12,15 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name="usuario")
-public class Usuario implements Serializable {
+@Table(name="user")
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+//    @GeneratedValue(generator = "increment")
+//    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "Nome é obrigatorio")
@@ -85,8 +82,8 @@ public class Usuario implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
-        return getId().equals(usuario.getId()) && getNome().equals(usuario.getNome()) && getEmail().equals(usuario.getEmail()) && getCpf().equals(usuario.getCpf());
+        User user = (User) o;
+        return getId().equals(user.getId()) && getNome().equals(user.getNome()) && getEmail().equals(user.getEmail()) && getCpf().equals(user.getCpf());
     }
 
     @Override
