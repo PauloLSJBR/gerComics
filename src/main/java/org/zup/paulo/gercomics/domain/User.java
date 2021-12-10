@@ -1,7 +1,7 @@
-package org.zup.paulo.gerComics.domain;
+package org.zup.paulo.gercomics.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.zup.paulo.gerComics.annotation.Cpf;
+import org.zup.paulo.gercomics.annotation.Cpf;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -18,8 +18,6 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-//    @GeneratedValue(generator = "increment")
-//    @GenericGenerator(name = "increment", strategy = "increment")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
@@ -34,6 +32,7 @@ public class User implements Serializable {
     @Cpf(message = "CPF invalido")
     private String cpf;
 
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotNull(message = "Data de nascimento é obrigatoria")
     private LocalDate dataNasc;

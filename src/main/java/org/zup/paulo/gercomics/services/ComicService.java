@@ -1,12 +1,12 @@
-package org.zup.paulo.gerComics.services;
+package org.zup.paulo.gercomics.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zup.paulo.gerComics.domain.Comic;
-import org.zup.paulo.gerComics.exceptions.ComicNotFoundException;
-import org.zup.paulo.gerComics.repositories.interfacesJPA.ComicRepositoryJPA;
-import org.zup.paulo.gerComics.services.interfaces.ComicServiceAPI;
+import org.zup.paulo.gercomics.domain.Comic;
+import org.zup.paulo.gercomics.exceptions.ComicNotFoundException;
+import org.zup.paulo.gercomics.repositories.interfacesJPA.ComicRepositoryJPA;
+import org.zup.paulo.gercomics.services.interfaces.ComicServiceAPI;
 
 import java.util.List;
 

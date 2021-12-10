@@ -1,4 +1,4 @@
-package org.zup.paulo.gerComics;
+package org.zup.paulo.gercomics;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

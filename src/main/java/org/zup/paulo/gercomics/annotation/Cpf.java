@@ -1,4 +1,4 @@
-package org.zup.paulo.gerComics.annotation;
+package org.zup.paulo.gercomics.annotation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

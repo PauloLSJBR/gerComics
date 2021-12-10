@@ -1,12 +1,12 @@
-package org.zup.paulo.gerComics.services;
+package org.zup.paulo.gercomics.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zup.paulo.gerComics.domain.User;
-import org.zup.paulo.gerComics.exceptions.UserNotFoundException;
-import org.zup.paulo.gerComics.repositories.interfacesJPA.UserRepositoryJPA;
-import org.zup.paulo.gerComics.services.interfaces.UserServiceAPI;
+import org.zup.paulo.gercomics.domain.User;
+import org.zup.paulo.gercomics.exceptions.UserNotFoundException;
+import org.zup.paulo.gercomics.repositories.interfacesJPA.UserRepositoryJPA;
+import org.zup.paulo.gercomics.services.interfaces.UserServiceAPI;
 
 import java.util.List;
 

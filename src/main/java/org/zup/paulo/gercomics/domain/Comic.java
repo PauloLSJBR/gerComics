@@ -1,9 +1,10 @@
-package org.zup.paulo.gerComics.domain;
+package org.zup.paulo.gercomics.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -23,14 +24,23 @@ public class Comic implements Serializable {
     private String autores;
 
     @NotNull(message = "Preço é obrigatorio")
-    private Float preco;
+    private BigDecimal preco;
 
     private String descricao;
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
 
     @NotNull(message = "Preço é obrigatorio")
     private Long isbn;
 
     public Long getComicId() {
+
         return ComicId;
     }
 
@@ -52,14 +62,6 @@ public class Comic implements Serializable {
 
     public void setAutores(String autores) {
         this.autores = autores;
-    }
-
-    public Float getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Float preco) {
-        this.preco = preco;
     }
 
     public String getDescricao() {

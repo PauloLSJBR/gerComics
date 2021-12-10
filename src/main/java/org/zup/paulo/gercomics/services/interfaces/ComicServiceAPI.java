@@ -1,7 +1,7 @@
-package org.zup.paulo.gerComics.services.interfaces;
+package org.zup.paulo.gercomics.services.interfaces;
 
 
-import org.zup.paulo.gerComics.domain.Comic;
+import org.zup.paulo.gercomics.domain.Comic;
 
 import java.util.List;
 

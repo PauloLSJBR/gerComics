@@ -1,6 +1,6 @@
-package org.zup.paulo.gerComics.services.interfaces;
+package org.zup.paulo.gercomics.services.interfaces;
 
-import org.zup.paulo.gerComics.domain.User;
+import org.zup.paulo.gercomics.domain.User;
 
 import java.util.List;
 

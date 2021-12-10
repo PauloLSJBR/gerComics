@@ -1,33 +1,33 @@
-package org.zup.paulo.gerComics.repositories;
+package org.zup.paulo.gercomics.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.zup.paulo.gerComics.domain.Comic;
-import org.zup.paulo.gerComics.repositories.interfacesJPA.ComicRepositoryJPA;
+import org.zup.paulo.gercomics.domain.Exemplary;
+import org.zup.paulo.gercomics.repositories.interfacesJPA.ExemplaryRepositoryJPA;
 
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ComicRepository {
+public class ExemplaryRepository {
 
     @Autowired
-    private ComicRepositoryJPA repositoryJPA;
+    private ExemplaryRepositoryJPA repositoryJPA;
 
     @Autowired
     private DataSource dataSource;
 
-    public List<Comic> findAll() {
+    public List<Exemplary> findAll() {
         return repositoryJPA.findAll();
     }
 
-    public Optional<Comic> findById(Long id) {
+    public Optional<Exemplary> findById(Long id) {
         return repositoryJPA.findById(id);
     }
 
-    public Comic save(Comic comic) {
-        return repositoryJPA.save(comic);
+    public Exemplary save(Exemplary exemplary) {
+        return repositoryJPA.save(exemplary);
     }
 
     public void deleteById(Long id) {

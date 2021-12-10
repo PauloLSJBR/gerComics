@@ -1,4 +1,4 @@
-package org.zup.paulo.gerComics.exceptions;
+package org.zup.paulo.gercomics.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
 

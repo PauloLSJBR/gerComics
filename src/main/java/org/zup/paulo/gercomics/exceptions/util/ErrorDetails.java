@@ -1,4 +1,4 @@
-package org.zup.paulo.gerComics.exceptions.util;
+package org.zup.paulo.gercomics.exceptions.util;
 
 public class ErrorDetails {
 
