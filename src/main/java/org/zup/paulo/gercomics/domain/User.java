@@ -8,7 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -35,7 +35,7 @@ public class User implements Serializable {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotNull(message = "Data de nascimento é obrigatoria")
-    private LocalDate dataNasc;
+    private Date dataNasc;
 
     public Long getId() {
         return id;
@@ -69,11 +69,11 @@ public class User implements Serializable {
         this.cpf = cpf;
     }
 
-    public LocalDate getDataNasc() {
+    public Date getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(LocalDate dataNasc) {
+    public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
 
@@ -82,11 +82,22 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return getId().equals(user.getId()) && getNome().equals(user.getNome()) && getEmail().equals(user.getEmail()) && getCpf().equals(user.getCpf());
+        return getId().equals(user.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNome(), getEmail(), getCpf());
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", dataNasc=" + dataNasc +
+                '}';
     }
 }

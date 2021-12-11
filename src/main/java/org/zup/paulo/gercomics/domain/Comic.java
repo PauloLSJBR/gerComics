@@ -28,16 +28,8 @@ public class Comic implements Serializable {
 
     private String descricao;
 
-    public BigDecimal getPreco() {
-        return preco;
-    }
-
-    public void setPreco(BigDecimal preco) {
-        this.preco = preco;
-    }
-
     @NotNull(message = "Preço é obrigatorio")
-    private Long isbn;
+    private String isbn;
 
     public Long getComicId() {
 
@@ -72,11 +64,19 @@ public class Comic implements Serializable {
         this.descricao = descricao;
     }
 
-    public Long getIsbn() {
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(Long isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
