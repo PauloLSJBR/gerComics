@@ -3,18 +3,15 @@ package org.zup.paulo.comicsmanager.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zup.paulo.comicsmanager.restclient.MarvelComicsClient;
 import org.zup.paulo.comicsmanager.domain.Comic;
-import org.zup.paulo.comicsmanager.domain.Exemplary;
-import org.zup.paulo.comicsmanager.domain.builders.UserBuilder;
 import org.zup.paulo.comicsmanager.exceptions.ComicNotFoundException;
+import org.zup.paulo.comicsmanager.repositories.ExemplaryRepository;
 import org.zup.paulo.comicsmanager.repositories.interfacesJPA.ComicRepositoryJPA;
 import org.zup.paulo.comicsmanager.repositories.interfacesJPA.ExemplaryRepositoryJPA;
 import org.zup.paulo.comicsmanager.representations.ComicRequest;
 import org.zup.paulo.comicsmanager.services.interfaces.ComicServiceAPI;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ComicService implements ComicServiceAPI {
@@ -23,10 +20,10 @@ public class ComicService implements ComicServiceAPI {
     private ComicRepositoryJPA repositoryJPA;
 
     @Autowired
-    private ExemplaryRepositoryJPA exemplaryRepository;
+    private MarvelService serviceMarvel;
 
     @Autowired
-    private MarvelComicsClient client;
+    private ExemplaryRepository examplaryRepository;
 
     @Transactional(readOnly = true)
     public Comic get(Long id){
@@ -65,26 +62,6 @@ public class ComicService implements ComicServiceAPI {
         repositoryJPA.deleteById(id);
     }
 
-    @Transactional(readOnly = true)
-    public List<Comic> getByUser(Long userId){
-
-        List<Exemplary> exemplaries = exemplaryRepository.findByUser(new UserBuilder().id(userId).build());
-
-        return exemplaries.stream().map(e -> e.getComic()).collect(Collectors.toList());
-    }
-
-    @Transactional
-    public Comic cadastra(ComicRequest comicRequest) {
-
-        Comic comic = get(comicRequest.getComicId());
-
-        if(comic == null) {
-
-
-        }
-
-        return null;
-    }
 }
 
 

@@ -3,10 +3,13 @@ package org.zup.paulo.comicsmanager.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zup.paulo.comicsmanager.domain.Comic;
+import org.zup.paulo.comicsmanager.exceptions.ComicNotFoundException;
 import org.zup.paulo.comicsmanager.representations.response.ComicsResponse;
+import org.zup.paulo.comicsmanager.representations.response.ResultsResponse;
 import org.zup.paulo.comicsmanager.restclient.MarvelComicsClient;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Service
@@ -20,11 +23,23 @@ public class MarvelService {
     public Comic findComic(Long comicId) {
         Long timeStamp = new Date().getTime();
 
-        ComicsResponse response = client.getComic(comicId, timeStamp, PUBLIC_KEY, buildHash(timeStamp));
+        try{
+            ComicsResponse response = client.getComic(comicId, timeStamp, PUBLIC_KEY, buildHash(timeStamp));
 
-        Comic comic = new Comic();
+            ResultsResponse result = response.getData().getResults().get(0);
+            Comic comic = new Comic();
+            comic.setComicId(result.getId());
+            comic.setTítulo(result.getTitle());
+            comic.setAutores(result.getCreators().getItems().get(0).getName());
+            comic.setPreco(BigDecimal.valueOf(result.getPrices().get(0).getPrice()));
+            comic.setDescricao(result.getDescription());
+            comic.setIsbn(result.getIsbn());
 
-        return comic;
+            return comic;
+        } catch (Exception ex) {
+            throw new ComicNotFoundException(String.format("Comic não existe na APIMarvel com esse id: %s ", comicId));
+        }
+
     }
 
     private String buildHash(Long timeStamp) {

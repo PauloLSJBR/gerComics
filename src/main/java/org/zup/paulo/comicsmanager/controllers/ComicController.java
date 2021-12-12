@@ -5,9 +5,11 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.zup.paulo.comicsmanager.domain.Comic;
+import org.zup.paulo.comicsmanager.domain.Exemplary;
 import org.zup.paulo.comicsmanager.domain.User;
 import org.zup.paulo.comicsmanager.representations.ComicRequest;
 import org.zup.paulo.comicsmanager.services.ComicService;
+import org.zup.paulo.comicsmanager.services.ExemplaryService;
 
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class ComicController {
 
     @Autowired
     private ComicService service;
+
+    @Autowired
+    private ExemplaryService exemplaryService;
 
     @GetMapping
     public @ResponseBody
@@ -44,8 +49,8 @@ public class ComicController {
     public @ResponseBody
     HttpEntity<Object> create(@RequestBody ComicRequest comicRequest) {
 
-        Comic comicN = service.cadastra(comicRequest);
-        return ResponseEntity.ok(comicN);
+        Exemplary exemplary = exemplaryService.cadastra(comicRequest);
+        return ResponseEntity.ok(exemplary);
     }
 
     @PutMapping(value = "/{comicId}")
